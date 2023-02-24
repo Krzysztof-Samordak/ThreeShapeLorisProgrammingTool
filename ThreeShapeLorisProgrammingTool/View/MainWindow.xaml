@@ -1,0 +1,89 @@
+﻿<Window x:Class="PE_MB_Tester.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PE_MB_Tester"
+        mc:Ignorable="d"
+        Title="3Shape PE_MB Tester"
+        Height="500" Width="800"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen"
+        Closing="WindowClosing">
+    <Border Background="#272537"
+                CornerRadius="20">
+        <Grid Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+
+            </Grid.RowDefinitions>
+            <Label x:Name="nameLabel" Content="Loris Programming Tool" Foreground="Orange" FontFamily="Baguet Script"
+                   FontSize="14" FontWeight="DemiBold" FontStyle="Italic" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"
+                   VerticalAlignment="Center" />
+            <Label x:Name="StatusS_Label" Content="{Binding testerStatus}" FontSize="20" Foreground="{Binding testerStatusColor}"
+                   Grid.Row="2" HorizontalAlignment="Left" FontWeight="Bold" Width="320" Grid.ColumnSpan="4"
+                   VerticalAlignment="Center" Height="44" Margin="150,0,0,0"/>
+            <Label x:Name="Status_Label" Content="Tester Status:" FontSize="20" Foreground="Azure" Grid.Row="2"
+                   HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Height="44"/>
+            <Button Name="Close_Button" Content="x" Click="CloseButton_Click" Background="#353340" Foreground="Azure"
+                    BorderThickness="0" Grid.Row="0" Grid.Column="4" Margin="0,6,0,0" HorizontalAlignment="Right"
+                    VerticalAlignment="Top" Width="16"/>
+            <Button x:Name="StartTest_Button" Content="Start test" HorizontalAlignment="Center" Background="#353340"
+                    BorderThickness="0" VerticalAlignment="Center" Height="44" Width="140"
+                    Command="{Binding startTestCommand}" Grid.Column="3" Grid.Row="2"
+                    Foreground="Azure" FontSize="20" IsEnabled="{Binding startButton}"/>
+            <Label x:Name="ResultS_Label" Content="{Binding testResult}" FontSize="20" HorizontalAlignment="Center"
+                   Foreground="{Binding testResultColor}" Grid.Row="4" VerticalAlignment="Center" Width="160"
+                   Height="40" Grid.Column="3" FontWeight="Bold"/>
+            <Label x:Name="Result_Label" Content="Test Result:" FontSize="20" Foreground="Azure" HorizontalAlignment="Right"
+                   Grid.Row="4" Margin="-40" VerticalAlignment="Center" Width="160" Height="40"
+                   Grid.Column="2" FontWeight="Bold"/>
+            <Label x:Name="PMICStatusLabel" Content="PMIC Status:" Foreground="Azure" FontSize="14" Grid.Row="1"
+                   Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Ellipse Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Height="12" Stroke="White" VerticalAlignment="Center"
+                     Width="12" Fill="{Binding PMICStatusColor}" Margin="85,0,0,0"/>
+            <Label x:Name="JTAGStatusLabel" Content="JTAG Status:" Foreground="Azure" FontSize="14" Grid.Row="1"
+                   Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Ellipse Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="12" Stroke="White" VerticalAlignment="Center"
+                     Width="12" Fill="{Binding JTAGStatusColor}" Margin="85,0,0,0"/>
+            <Label x:Name="UARTStatusLabel" Content="UART Status:" Foreground="Azure" FontSize="14" Grid.Row="1"
+                   Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Ellipse Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Height="12" Stroke="White" VerticalAlignment="Center"
+                     Width="12" Fill="{Binding UARTStatusColor}" Margin="85,0,0,0"/>
+            <Label x:Name="RouterStatusLabel" Content="Router Status:" Foreground="Azure" FontSize="14" Grid.Row="1"
+                   Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Ellipse Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Height="12" Stroke="White" VerticalAlignment="Center"
+                     Width="12" Fill="{Binding RouterStatusColor}" Margin="95,0,0,0"/>
+            <DataGrid Name="testsGrid" Background="Azure"
+                  ItemsSource="{Binding tests}" Grid.Row="6" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="5" CanUserAddRows="False"
+                      CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
+                      CanUserSortColumns="False" IsReadOnly="True" FontSize="20" AlternatingRowBackground="AliceBlue"
+                      RowBackground="azure">
+            </DataGrid>
+        </Grid>
+    </Border>
+</Window>
+
+
+
+
